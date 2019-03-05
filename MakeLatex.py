@@ -19,14 +19,17 @@ def processline(line):
     return (sname,name,insts)
 
 entries=[]
-fentries=[]
+fentries={}
 for entry in map(processline, open(fname).readlines()):
     if entry[0] in first_authors:
-        fentries.append(entry)
+        fentries[entry[0]]=entry
     else:
         entries.append(entry)
         
 entries.sort() 
+# the others migth be in wrong order
+fentries=[fentries[n] for n in first_authors]
+
 
 instdir={}
 icount=0
