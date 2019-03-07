@@ -10,13 +10,14 @@ first_authors=sys.argv[2:]
 
 def processline(line):
     sname,name,inst=line.split("||")
-    sname=sname.replace(" ","")
+    sname=sname.split()[-1].upper() ## de la Macorra and such, upper for people who didn't capitalize
     name=name.replace('"','')
     inst=inst.replace("\n","")
     inst=inst.replace(",", " ")
+    inst=inst.replace("'", " ")
     #print ("X",inst,inst.split("\\"),"Y")
     insts=["\\"+x.replace(" ","") for x in inst.split("\\")[1:]] ## this is robust against spaces, commas other bullshit
-    return (sname,name,insts)
+    return (sname.split()[-1],name,insts)
 
 entries=[]
 fentries={}
