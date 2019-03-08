@@ -21,6 +21,9 @@ with open(fname) as csvfile:
             for j,name in enumerate(row):
                 fields[name.split()[0]]=j
             continue
+        ## people with no institutions are filtered out, fuck them
+        if '\\' not in row[fields['LaTeX']]:
+            continue
         endorsing=row[fields['Which']]
         elist=[]
         for word in endorsing.split():

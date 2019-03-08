@@ -6,7 +6,7 @@ if len(sys.argv)<2:
 
 fname=sys.argv[1]
 
-first_authors=sys.argv[2:]
+first_authors=[s.upper() for s in sys.argv[2:]]
 
 def processline(line):
     sname,name,inst=line.split("||")
